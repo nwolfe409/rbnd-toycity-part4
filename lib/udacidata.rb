@@ -72,9 +72,12 @@ class Udacidata
     products = []
     self.all.each do |product|
       if product.brand == options[:brand]
-        return products
+        products << product
+      elsif product.name == options[:name]
+        products << product
       end
     end
+    return products
   end
   
   def update options={}
