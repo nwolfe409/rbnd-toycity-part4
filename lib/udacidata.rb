@@ -67,6 +67,31 @@ class Udacidata
       end
     end
   end
+  
+  def self.where(options={})
+    products = []
+    self.all.each do |product|
+      if product.brand == options[:brand]
+        return products
+      end
+    end
+  end
+  
+  def update options={}
+   	@brand, @price = options[:brand], options[:price]
+   	data_table = CSV.table(self.class.data_path, write_headers: true)
+ 		  data_table.each do |row|
+   		  if row[:id] == id
+   			  row[:brand] = options[:brand]
+   			  row[:price] = options[:price]
+   		  end
+ 		  end
+ 
+ 		File.open(self.class.data_path, 'w') do |f|
+   		f.write(data_table.to_csv)
+ 		end
+ 		self
+  end
       
     
   
