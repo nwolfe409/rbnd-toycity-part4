@@ -2,8 +2,6 @@ require_relative 'find_by'
 require_relative 'errors'
 require 'csv'
 
-#@@data_path = File.dirname(__FILE__) + "/../data/data.csv"
-
 class Udacidata
   
   Module.create_finder_methods(:brand, :name)
@@ -82,13 +80,8 @@ class Udacidata
   end
   
   def update(options={})
-#   	if options[:brand].nil? == false
-   	  @brand = options[:brand]
-#   	end
-#   	if options[:price].nil? == false
-   	  @price = options[:price]
-#   	end
-#   	@brand, @price = options[:brand], options[:price]
+   	@brand = options[:brand]
+   	@price = options[:price]
    	data_table = CSV.table(self.class.data_path, write_headers: true)
  		  data_table.each do |row|
    		  if row[:id] == id
