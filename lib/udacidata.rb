@@ -99,7 +99,5 @@ class Udacidata
  		end
  		self
   end
-      
-    
-  
+
 end
