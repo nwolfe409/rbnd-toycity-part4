@@ -81,13 +81,23 @@ class Udacidata
     return products
   end
   
-  def update options={}
-   	@brand, @price = options[:brand], options[:price]
+  def update(options={})
+#   	if options[:brand].nil? == false
+   	  @brand = options[:brand]
+#   	end
+#   	if options[:price].nil? == false
+   	  @price = options[:price]
+#   	end
+#   	@brand, @price = options[:brand], options[:price]
    	data_table = CSV.table(self.class.data_path, write_headers: true)
  		  data_table.each do |row|
    		  if row[:id] == id
-   			  row[:brand] = options[:brand]
-   			  row[:price] = options[:price]
+   			  if options[:brand].nil? == false
+   			    row[:brand] = options[:brand]
+   			  end
+   			  if options[:price].nil? == false
+   			    row[:price] = options[:price]
+   			  end
    		  end
  		  end
  
