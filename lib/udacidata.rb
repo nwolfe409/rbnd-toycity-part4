@@ -46,6 +46,7 @@ class Udacidata
         return product
       end
     end
+    raise ProductNotFoundError, "Product id:#{id} not found"
   end
   
   def self.destroy(id)
