@@ -17,7 +17,7 @@ class Udacidata
         CSV.open(this_file, "ab") {|csv| csv << [csv_data_ids.length.to_s, attributes[:brand].to_s, attributes[:name].to_s, attributes[:price].to_s]} 
         attributes[:id] = csv_data_ids.length.to_s
       end
-      return_object = self.new(attributes)
+      return self.new(attributes)
     end
   end
   

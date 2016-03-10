@@ -10,13 +10,13 @@ module Analyzable
   end
   
   def print_report(items)
+    brands = count_by_brand(items)
+    names = count_by_name(items)
     report = "Average price of toys: $#{average_price(items)}\nInventory by Brand:\n"
-#    brands = count_by_brand(items)
-#    brands.each {|brand, size| report << "- #{brand}: #{size}\n"}
-#    report += "Inventory by Name:\n"
-#    names = count_by_name(items)
-#    names.each {|name, size| report << "- #{name}: #{size}\n"}
-    report
+    brands.each {|brand, size| report << "- #{brand}: #{size}\n"}
+    report += "Inventory by Name:\n"
+    names.each {|name, size| report << "- #{name}: #{size}\n"}
+    return report
   end
   
   def self.count_by_brand(items)
@@ -36,6 +36,5 @@ module Analyzable
     end
     names
   end
-  
-  
+
 end
